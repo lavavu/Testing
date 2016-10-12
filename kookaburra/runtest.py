@@ -13,5 +13,6 @@ lv.open()
 #lv.image("output")
 #lv.image("kookaburra1.png")
 #Test against current framebuffer contents
-lv.testimage("kookaburra_.png", "")
+lv.testimage("kookaburra.png", "")
+#lv.testimage("orig1.jpg", "orig2.jpg")
 

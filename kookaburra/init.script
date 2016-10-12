@@ -66,4 +66,4 @@ rotation 0 1 0 0
 
 border off
 axis off
-#list objects
+list objects
