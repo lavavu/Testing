@@ -1,0 +1,69 @@
+#verbose
+trisplit=1
+swapyz=true
+
+file Mandible.obj
+file Cranium-reduced-100k.obj
+file "1. Depressor Mandibulae.obj"
+colour 3 [0.82,0.05,0.11,1.0]
+
+select
+file "2. Adductor Mandibulae Externus profundus.obj"
+select 4
+colour [0.93,0.40,0.43,1.0]
+file "3. Adductor Mandibulae Externus superficialis.obj"
+colour [0.76,0.49,0.48,1.0]
+file "4. Unnamed Temporal muscle.obj"
+colour [0.70,0.29,0.30,1.0]
+file "5. Adductor Mandibulae Posterior.obj"
+colour [1.00,0.00,0.46,1.0]
+
+select
+file "6. Pseudotemporalis superficialis.obj"
+select 5
+colour [0.91,0.43,0.46,1.0]
+file "7. Pseudotemporalis profundus.obj"
+colour [0.87,0.64,0.67,1.0]
+
+select
+file "8. Pterygoideus Dorsalis Medialis anterior.obj"
+select 6
+colour [0.89,0.56,0.76,1.0]
+file "9. Pterygoideus Dorsalis Medialis posterior.obj"
+colour [1.00,0.00,0.10,1.0]
+file "10. Pterygoideus Dorsalis Lateralis.obj"
+colour [0.89,0.33,0.67,1.0]
+
+select
+file "11. Pterygoideus Ventralis Medialis.obj"
+select 7
+colour [1.00,0.59,0.00,1.0]
+file "12. Pterygoideus Ventralis lateralis.obj"
+colour [0.91,0.47,0.25,1.0]
+file "13. Pterygoideus Ventralis lateralis Part2.obj"
+colour [0.86,0.58,0.36,1.0]
+file "14. Pterygoideus Ventralis lateralis Part3.obj"
+colour [0.78,0.49,0.32,1.0]
+
+select
+
+select 1
+colour=[170,151,114]
+opacity=0.5
+select 2
+colour=[170,151,114]
+opacity=0.5
+
+select
+name 3 "Depressor Muscles"
+name 4 "Temporal muscles"
+name 5 "Pseudotemporalis muscles"
+name 6 "Dorsal Pterygoid muscles"
+name 7 "Pterygoid Muscles"
+
+translation 0 0 -120
+rotation 0 1 0 0
+
+border off
+axis off
+#list objects
