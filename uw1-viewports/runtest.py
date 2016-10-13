@@ -17,9 +17,10 @@ def clean():
     except:
         pass
 
+dbfile = "uw1-vp-gLucifer.gldb"
+
 #Using automated image output
 clean()
-dbfile = "uw1-vp-gLucifer.gldb"
 lv = lavavu.Viewer(writeimage=True, timestep=[300, 500], database=dbfile, figure=-1, quality=3, port=0)
 
 test(lv)
@@ -44,4 +45,3 @@ for ts in range(300,501,100):
 
 test(lv)
 clean()
-
