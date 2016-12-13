@@ -9,9 +9,14 @@ import os
 lv = lavavu.Viewer(quality=2, port=0, initscript=True)
 
 lv.open()
+
+#Enable transparent output
+lv["pngalpha"] = True
+
 #lv.display()
 #lv.image("output")
 #lv.image("kookaburra1.png")
+
 #Test against current framebuffer contents
 lv.testimage("kookaburra.png", "")
 #lv.testimage("orig1.jpg", "orig2.jpg")
