@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import lavavu
 import os
-
 import importlib
 import imp
 path = os.getcwd()
