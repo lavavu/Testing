@@ -3,7 +3,7 @@ import lavavu
 
 #Colourbar overlay rendering test
 
-lv = lavavu.Viewer(resolution=[500,500], quality=3)
+lv = lavavu.Viewer(resolution=[500,500], quality=1)
 
 lv.test()
 
