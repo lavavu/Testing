@@ -9,7 +9,7 @@ dbfile = "uw1-vp-gLucifer.gldb"
 
 #Using image output scripted through python 
 #(NOTE: something weird happens if this runs last, so moved to first)
-lv = lavavu.Viewer(quality=3, port=0)
+lv = lavavu.Viewer(quality=1, port=0)
 lv.file(dbfile)
 
 lv.open()
@@ -21,15 +21,13 @@ for ts in range(300,501,100):
 lv.testimages()
 
 #Using automated image output
-lv = lavavu.Viewer(writeimage=True, timestep=[300, 500], database=dbfile, figure=-1, quality=3, port=0)
+lv = lavavu.Viewer(writeimage=True, timestep=[300, 500], database=dbfile, figure=-1, quality=1, port=0)
 
-lv.testimages(clear=True)
+lv.testimages()
 
 #Again using "images" command
-lv = lavavu.Viewer(database=dbfile, quality=3, port=0)
+lv = lavavu.Viewer(database=dbfile, quality=1, port=0)
 lv.timestep(300)
 lv.images(500)
-lv.testimages(clear=True)
-lv.clear()
-
+lv.testimages()
 
