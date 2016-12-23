@@ -43,7 +43,7 @@ obj["font"] = "fixed"
 
 lv.border(0)
 lv.axis(0)
-lv.hide(4,5,6)
+lv.hide(1,3,4,5,6)
 
 lv.image("LavaVu.png")
 lv["background"] = "white"
