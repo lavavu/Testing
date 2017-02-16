@@ -3,6 +3,7 @@ import lavavu
 
 #Colourbar overlay rendering test
 
+#lv = lavavu.Viewer(resolution=[500,500], quality=3)
 lv = lavavu.Viewer(resolution=[500,500], quality=1)
 
 lv.test()
@@ -49,5 +50,5 @@ lv.image("LavaVu.png")
 lv["background"] = "white"
 lv.image("LavaVu-1.png")
 
-lv.testimages(clear=True)
+lv.testimages()
 
