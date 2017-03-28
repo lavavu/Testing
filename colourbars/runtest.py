@@ -8,23 +8,23 @@ lv = lavavu.Viewer(resolution=[500,500], quality=1)
 
 lv.test()
 
-lv.select("particles")
+particles = lv.getobject('particles')
 
-lv.colourbar("right")
-lv.colourbar("top")
-lv.colourbar("left")
+right = particles.colourbar(align="right")
+top = particles.colourbar(align="top")
+left = particles.colourbar(align="left")
 
-obj = lv.getobject(7)
+obj = right
 obj["font"] = "vector"
 obj["fontscale"] = 0.5
 obj["ticks"] = 4
 obj["outline"] = 0
 
-obj = lv.getobject(8)
+obj = top
 obj["size"] = [200,5]
 obj["position"] = 60
 
-obj = lv.getobject(9)
+obj = left
 obj["size"] = [0.5,0.1]
 obj["position"] = -60
 obj["offset"] = 30
@@ -36,10 +36,12 @@ obj["fontcolour"] = "#888888"
 lines = lv.objects["line-segments"]
 cmap = lv.colourmap("line-segments", "red green blue")
 lines["colourmap"] = cmap
-lines.colourbar(align="right")
+lines.colourbar(align="right") #Another on right
 
+particles.select()
 lv.colourbar()
-obj = lv.getobject()
+obj = lv.getobject() #Gets most recently added
+print obj
 obj["font"] = "fixed"
 
 lv.border(0)
