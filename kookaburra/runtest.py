@@ -18,6 +18,7 @@ lv["pngalpha"] = True
 #lv.image("kookaburra1.png")
 
 #Test against current framebuffer contents
-lv.testimage("kookaburra.png", "")
+if not lv.testimage("kookaburra.png", "")
+    raise RuntimeError("Image tests failed due to one or more image comparisons above tolerance level!")
 #lv.testimage("orig1.jpg", "orig2.jpg")
 
