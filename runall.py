@@ -13,6 +13,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "xvfb":
     xvfb = Display(visible=0, size=(1600, 1200))
     xvfb.start()
     print xvfb
+    lavavu.dumpfails = 1
 
 for d in os.listdir(path):
     if not os.path.isdir(os.path.join(path,d)): continue
@@ -23,8 +24,22 @@ for d in os.listdir(path):
     print "Running tests in " + os.getcwd()
     print "==================================================="
     #print modfile
-    testmod = imp.load_source('runtest', modfile)
-    os.chdir(path)
+    try:
+        testmod = imp.load_source('runtest', modfile)
+        os.chdir(path)
+    except:
+        if lavavu.dumpfails > 0:
+            import glob
+            imagelist = glob.glob("FAIL*.png")
+            for f in imagelist:
+                import base64
+                with open(f, mode='rb') as file:
+                    fileContent = file.read()
+                    encoded = "data:image/png;base64," +  base64.b64encode(fileContent)
+                    print "__________________________________________"
+                    print encoded
+                    print "__________________________________________"
+            raise
     print "==================================================="
 
 if not xvfb is None:
