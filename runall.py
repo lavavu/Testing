@@ -7,8 +7,11 @@ import sys
 path = os.getcwd()
 
 #Pass "xvfb" to open a virtual display for testing
-if len(sys.argv) > 1 and sys.argv[1] == "echo":
-    lavavu.echofails = 1
+if "echo" in sys.argv:
+    lavavu.echo_fails = 1
+
+if "verbose" in sys.argv:
+    lavavu.default_args += ['-v']
 
 for d in os.listdir(path):
     if not os.path.isdir(os.path.join(path,d)): continue
