@@ -9,7 +9,7 @@ lv = lavavu.Viewer(resolution=[800,300])
 #Test volume render, with colour map and translation / rotation
 vols = []
 for x in range(-1,2):
-    lv.voltest()
+    lv.voltest(64, 64, 64)
     cbar = lv.getobject() #Get last added = colourbar
     lv.delete(cbar.id)
     vol = lv.getobject() #Get last added = volume
@@ -17,8 +17,8 @@ for x in range(-1,2):
     vol["translate"] = [x, 0, 0]
     print vol["translate"]
 
-vols[0]["rotate"] = lavavu.rotateQ(0, 45, 0)
-vols[2]["rotate"] = lavavu.rotateQ(45, 0, 0)
+vols[0]["rotate"] = lavavu.rotation(0, 45, 0)
+vols[2]["rotate"] = lavavu.rotation(45, 0, 0)
 
 lv.images()
 
