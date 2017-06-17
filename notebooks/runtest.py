@@ -39,8 +39,12 @@ for f in files:
             os.makedirs(notebook)
 
         #Notebooks must be converted to py before running or images will be generated inline and not saved to disk
-        subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', fname, '--output', os.path.join(wd,notebook, notebook)],
-                stdout=outFile, stderr=outFile )
+        try:
+            subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', fname, '--output', os.path.join(wd,notebook, notebook)],
+                                  stdout=outFile, stderr=outFile )
+        except:
+            print("Notebook conversion failed")
+            pass
         #Change to working dir for test
         os.chdir(notebook)
         #Execute converted script

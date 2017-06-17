@@ -11,7 +11,7 @@
 # 
 # 
 
-# In[5]:
+# In[1]:
 
 #First set up a basic vis so we can display the colourmaps
 import lavavu
@@ -48,7 +48,7 @@ lv = lavavu.Viewer(border=False, axis=False, background="gray90", quality=1)
 # 
 # There are several properties that specify how the colour bar is displayed, see: https://github.com/OKaluza/LavaVu/wiki/Property-Reference#colourbar
 
-# In[6]:
+# In[2]:
 
 #Create colour bar then load a colourmap into it
 cbar1 = lv.colourbar(size=[0.95,15], align="top")
@@ -66,7 +66,7 @@ lv.display(resolution=[640,80], transparent=True)
 # Custom [cube helix](https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) maps can be generated with cubeHelix(), these will always have monotonically varying intensity values to allow them to still be useful when printed in greyscale
 # 
 
-# In[7]:
+# In[12]:
 
 cbar1.colourmap(lavavu.cubeHelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma=1.0, alpha=False))
 cbar2.colourmap(lavavu.cubeHelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), logscale=False)
@@ -79,7 +79,7 @@ lv.display(resolution=[640,80], transparent=True)
 # 
 # Colourmap data can be retreived with .getcolourmap() on an object, which returns the map formatted as a string, .getcolourmap(string=False) returns a python list of (position, colour) tuples instead. Either of these formats are supported when creating a colourmap so the data can be modified and passed to a new colour map.
 
-# In[8]:
+# In[13]:
 
 print cbar1.getcolourmap()
 
@@ -91,7 +91,7 @@ print cbar1.getcolourmap()
 # 
 # The *positions=False* argument can be passed to ignore the position data and load only the colours.
 
-# In[9]:
+# In[5]:
 
 try:
     #Check if file exists, if not download it from cpt-city
@@ -116,7 +116,7 @@ except:
 # 
 # There are a number of colour maps available for convenience which can be accessed by passing their name instead of a list of colours when creating a colour map.
 
-# In[10]:
+# In[6]:
 
 #Get the list of colormap names
 maps = lv.defaultcolourmaps()
@@ -129,19 +129,15 @@ print maps
 # 
 # The colourmap data can be retrieved for modification as follows:
 
-# In[11]:
+# In[7]:
 
 print lv.defaultcolourmap('cubelaw')
 
 
-# **Discrete maps and colour bars**  
-# When loading a colour map, pass *discrete=True* to produce a discrete colour map instead of a contuously varying one.
-# 
-# The colourbar() function creates a colour bar plot, it can be called from an object and uses that objects colour map, if called on the viewer it must have its map specified at some point with colourmap(data).
-# 
-# There are several properties that specify how the colour bar is displayed, see: https://github.com/OKaluza/LavaVu/wiki/Property-Reference#colourbar
+# **Plot of all built in maps**  
+# Finally we will plot all the available built in colourmaps in continuous and discrete modes
 
-# In[12]:
+# In[8]:
 
 #Clear the plot and create some new colour bars
 lv.clear()
@@ -151,7 +147,7 @@ cbar1 = lv.colourbar(size=[0.95,15], align="top")
 cbar2 = lv.colourbar(size=[0.95,15], align="top", binlabels=True)
 
 
-# In[13]:
+# In[9]:
 
 #Plot each map in the list
 for name in maps:
