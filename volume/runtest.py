@@ -17,8 +17,8 @@ for x in range(-1,2):
     vol["translate"] = [x, 0, 0]
     print vol["translate"]
 
-vols[0]["rotate"] = lavavu.rotation(0, 45, 0)
-vols[2]["rotate"] = lavavu.rotation(45, 0, 0)
+vols[0]["rotate"] = [0, 45, 0]
+vols[2]["rotate"] = [45, 0, 0]
 
 lv.images()
 
