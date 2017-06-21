@@ -55,18 +55,18 @@ cbar1 = lv.colourbar(size=[0.95,15], align="top")
 cbar1.colourmap([(0, 'green'), (0.75, 'yellow'), (1, 'red')], reverse=True)
 
 #Create another colour bar and load a map, this time with a log scale
-cbar2 = lv.colourbar(size=[0.95,15], align="top", tickvalues=[100, 500])
-cbar2.colourmap('black (100)gray45 (101)gray60 white', range=[10,1000], logscale=True)
+cbar2 = lv.colourbar(size=[0.95,15], align="top", tickvalues=[20,50,100,200,500])
+cbar2.colourmap('black (100)goldenrod (101)khaki white', range=[10,1000], logscale=True)
 
 lv.display(resolution=[640,80], transparent=True)
 
 
 # **CubeHelix**
 # 
-# Custom [cube helix](https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) maps can be generated with cubeHelix(), these will always have monotonically varying intensity values to allow them to still be useful when printed in greyscale
+# Custom [cube helix](https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) maps can be generated with cubeHelix(), these will always have monotonically varying intensity values to be when printed in greyscale
 # 
 
-# In[12]:
+# In[3]:
 
 cbar1.colourmap(lavavu.cubeHelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma=1.0, alpha=False))
 cbar2.colourmap(lavavu.cubeHelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), logscale=False)
@@ -74,12 +74,17 @@ cbar2["tickvalues"] = []
 
 lv.display(resolution=[640,80], transparent=True)
 
+#Display in greyscale
+cbar1.colourmap(lavavu.cubeHelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma=1.0, alpha=False), monochrome=True)
+cbar2.colourmap(lavavu.cubeHelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), monochrome=True)
+lv.display(resolution=[640,80], transparent=True)
+
 
 # **Getting data**
 # 
 # Colourmap data can be retreived with .getcolourmap() on an object, which returns the map formatted as a string, .getcolourmap(string=False) returns a python list of (position, colour) tuples instead. Either of these formats are supported when creating a colourmap so the data can be modified and passed to a new colour map.
 
-# In[13]:
+# In[4]:
 
 print cbar1.getcolourmap()
 
