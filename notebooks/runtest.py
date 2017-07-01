@@ -9,23 +9,12 @@ import shutil
 #Viewer instance for running image tests
 lv = lavavu.Viewer(quality=1)
 
-nbdir = os.path.join(os.path.dirname(lavavu.__file__), "notebooks")
-print nbdir 
-#files = glob.glob(nbdir  + "/*.ipynb")
-files = [
-    'ColourMaps.ipynb'
-    ]
-
-print files
-
 #Save working dir
 wd = os.getcwd()
 
-#Process list of notebooks
-for f in files:
-    fname = os.path.join(nbdir, f)
+def testNotebook(path):
     #Get filename without path and extension
-    notebook = os.path.splitext(os.path.basename(fname))[0]
+    notebook = os.path.splitext(os.path.basename(path))[0]
     print "Testing Notebook: " + notebook
     #Check if the test dir exists, if not create
     dirfound = os.path.exists(notebook)
@@ -40,7 +29,7 @@ for f in files:
 
         #Notebooks must be converted to py before running or images will be generated inline and not saved to disk
         try:
-            subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', fname, '--output', os.path.join(wd,notebook, notebook)],
+            subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', path, '--output', os.path.join(wd,notebook, notebook)],
                                   stdout=outFile, stderr=outFile )
         except:
             print("Notebook conversion failed")
@@ -63,3 +52,23 @@ for f in files:
     #Restore working dir
     os.chdir(wd)
 
+#Process list of notebooks, local and in LavaVu notebooks folder
+
+#Selected notebooks from LavaVu
+nbdir = os.path.join(os.path.dirname(lavavu.__file__), "notebooks")
+print nbdir 
+#files = glob.glob(nbdir  + "/*.ipynb")
+files = [
+    'ColourMaps.ipynb'
+    ]
+
+print files
+for f in files:
+    fname = os.path.join(nbdir, f)
+    testNotebook(fname)
+
+#Local notebooks in the test repo
+files = glob.glob("*.ipynb")
+print files
+for f in files:
+    testNotebook(f)
