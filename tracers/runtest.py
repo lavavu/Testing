@@ -20,3 +20,14 @@ for ts in range(0,11,5):
 #Compare the output to expected results
 lv.testimages()
 
+lv.open()
+
+#Using automated image output
+lv = lavavu.Viewer(database=dbfile, quality=1, cache=True)
+for ts in range(0,11,5):
+    lv.timestep(ts)
+    lv.image("window-" + str(ts).zfill(5))
+
+#Compare the output to expected results
+lv.testimages()
+
