@@ -18,8 +18,7 @@ steps = lv.timesteps()
 print steps
 lv.timestep(steps[-1])
 figures = lv.figures()
-for fig in figures:
-    name = fig["figure"]
+for name in figures:
     lv.figure(name)
     lv["title"] = "Timestep ##"
     lv.display()
