@@ -10,3 +10,21 @@ lv = lavavu.Viewer(writeimage=True, database=dbfile, quality=1)
 #Compare the output to expected results
 lv.testimages()
 
+#Using scripted image output
+lv = lavavu.Viewer(database=dbfile, quality=1)
+
+#Re-visualise the final timestep
+steps = lv.timesteps()
+print steps
+lv.timestep(steps[-1])
+figures = lv.figures()
+for fig in figures:
+    name = fig["figure"]
+    lv.figure(name)
+    lv["title"] = "Timestep ##"
+    lv.display()
+    #lv.image(name + "-%05d.png" % steps[-1])
+
+#Compare the output to expected results
+lv.testimages()
+
