@@ -12,6 +12,7 @@ lv.open()
 
 #Enable transparent output
 lv["pngalpha"] = True
+lv["diffuse"] = 0.8 #Increase lighting level
 
 #lv.display()
 #lv.image("output")
