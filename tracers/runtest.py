@@ -31,3 +31,15 @@ for ts in range(0,11,5):
 #Compare the output to expected results
 lv.testimages()
 
+#Using automated image output to write last image first with initial timestep param
+lv = lavavu.Viewer(database=dbfile, timestep=10, quality=1)
+lv.image("window-00010")
+#Write the others or test will fail because expected not created
+lv.timestep(5)
+lv.image("window-00005")
+lv.timestep(0)
+lv.image("window-00000")
+
+#Compare the output to expected results
+lv.testimages()
+
