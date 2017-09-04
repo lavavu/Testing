@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import lavavu
 
-#This tests multiple db scan from filenames with sequential numbering
 dbfile = "Tracers.gldb"
 
 #Using automated image output
