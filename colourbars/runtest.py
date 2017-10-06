@@ -8,7 +8,7 @@ lv = lavavu.Viewer(resolution=[500,500], quality=1)
 
 lv.test()
 
-particles = lv.getobject('particles')
+particles = lv.Object('particles')
 
 right = particles.colourbar(align="right")
 top = particles.colourbar(align="top")
@@ -40,7 +40,7 @@ lines.colourbar(align="right") #Another on right
 
 particles.select()
 lv.colourbar()
-obj = lv.getobject() #Gets most recently added
+obj = lv.Object() #Gets most recently added
 print obj
 obj["font"] = "fixed"
 

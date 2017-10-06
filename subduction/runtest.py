@@ -17,7 +17,7 @@ lv = lavavu.Viewer(database=dbfile, quality=1)
 steps = lv.timesteps()
 print steps
 lv.timestep(steps[-1])
-figures = lv.figures()
+figures = lv.figures
 for name in figures:
     lv.figure(name)
     lv["title"] = "Timestep ##"

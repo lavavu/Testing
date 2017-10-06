@@ -10,9 +10,9 @@ lv = lavavu.Viewer(resolution=[800,300])
 vols = []
 for x in range(-1,2):
     lv.voltest(64, 64, 64)
-    cbar = lv.getobject() #Get last added = colourbar
+    cbar = lv.Object() #Get last added = colourbar
     lv.delete(cbar.id)
-    vol = lv.getobject() #Get last added = volume
+    vol = lv.Object() #Get last added = volume
     vols.append(vol)
     vol["translate"] = [x, 0, 0]
     print vol["translate"]
