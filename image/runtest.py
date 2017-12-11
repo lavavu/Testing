@@ -7,10 +7,9 @@ lv.image('test.png')
 #Test base64 image encoding
 lvencoded = lv.image('', resolution=(250,150), transparent=False)
 lv.image('small.png', resolution=(250,150), transparent=False)
-with open('small.png', mode='rb') as file: # b is important -> binary
-    fileContent = file.read()
+with open('small.png', mode='rb') as f: # b is important -> binary
     import base64
-    pyencoded = 'data:image/png;base64,' + str(base64.b64encode(fileContent),'utf-8')
+    pyencoded = 'data:image/png;base64,' + base64.b64encode(f.read()).decode('ascii')
     if pyencoded != lvencoded:
         raise ValueError('Base64 encoded images do not match')
 
