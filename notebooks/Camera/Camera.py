@@ -3,11 +3,13 @@
 
 # In[ ]:
 
+
 import lavavu
 lv = lavavu.Viewer(background="white")
 
 
 # In[ ]:
+
 
 #Create regular grid with numpy
 import numpy
@@ -41,6 +43,7 @@ def makegrid(width=5, height=5, offset=[0,0,0], scale=[1,1,1], axis=2):
 
 # In[ ]:
 
+
 #The quads() method plots a set of 3d vertices as a connected grid of quadrilaterals
 #(must provide dims[0]*dims[1] 3d vertices)
 x0 = lv.quads("x0", vertices=makegrid(), dims=[6,6], colour="red")
@@ -52,6 +55,7 @@ z1 = lv.quads("z1", vertices=makegrid(offset=[0,5,0], axis=1), dims=[6,6], colou
 
 
 # In[ ]:
+
 
 lv["axislength"] = 0.35
 def camset(axis, angle):
@@ -90,9 +94,4 @@ for c in range(10):
     lv.rotation(random.random()*360, random.random()*360, random.random()*360)
     lv.display(resolution=[300,200])
     camcheck()
-
-
-# In[ ]:
-
-
 

@@ -41,7 +41,7 @@ lines.colourbar(align="right") #Another on right
 particles.select()
 lv.colourbar()
 obj = lv.Object() #Gets most recently added
-print obj
+print(obj)
 obj["font"] = "fixed"
 
 lv.border(0)

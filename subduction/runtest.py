@@ -15,7 +15,7 @@ lv = lavavu.Viewer(database=dbfile, quality=1)
 
 #Re-visualise the final timestep
 steps = lv.timesteps()
-print steps
+print(steps)
 lv.timestep(steps[-1])
 figures = lv.figures
 for name in figures:

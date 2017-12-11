@@ -39,7 +39,7 @@ lv.timestep(0)
 
 lv.open()
 steps = lv.timesteps()
-print steps
+print(steps)
 
 lv.translation(0, 0, -3.5)
 

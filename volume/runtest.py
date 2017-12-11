@@ -15,7 +15,7 @@ for x in range(-1,2):
     vol = lv.Object() #Get last added = volume
     vols.append(vol)
     vol["translate"] = [x, 0, 0]
-    print vol["translate"]
+    print(vol["translate"])
 
 vols[0]["rotate"] = [0, 45, 0]
 vols[2]["rotate"] = [45, 0, 0]

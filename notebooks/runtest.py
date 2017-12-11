@@ -15,33 +15,39 @@ wd = os.getcwd()
 def testNotebook(path):
     #Get filename without path and extension
     notebook = os.path.splitext(os.path.basename(path))[0]
-    print "Testing Notebook: " + notebook
+    print("Testing Notebook: " + notebook)
     #Check if the test dir exists, if not create
     dirfound = os.path.exists(notebook)
     if not dirfound: 
-        print "Creating dirs: " + notebook + '/expected'
+        print("Creating dirs: " + notebook + '/expected')
         os.makedirs(os.path.join(notebook, 'expected'))
-    #Create log file
-    outName = notebook + "/convert.out"
-    with open(outName, "w") as outFile:
-        if not os.path.exists(notebook):
-            os.makedirs(notebook)
 
-        #Notebooks must be converted to py before running or images will be generated inline and not saved to disk
-        try:
-            subprocess.check_call(['jupyter', 'nbconvert', '--to', 'script', path, '--output', os.path.join(wd,notebook, notebook)],
-                                  stdout=outFile, stderr=outFile )
-        except:
-            print("Notebook conversion failed")
-            pass
-        #Change to working dir for test
-        os.chdir(notebook)
-        #Execute converted script
-        subprocess.check_call(['python', notebook+".py"], stdout=outFile, stderr=outFile )
+    if not os.path.exists(notebook):
+        os.makedirs(notebook)
+
+    #Notebooks must be converted to py before running or images will be generated inline and not saved to disk
+    try:
+        import nbformat
+        from nbconvert import PythonExporter
+        with open(path) as fh:
+            nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
+        exporter = PythonExporter()
+        source, meta = exporter.from_notebook_node(nb)
+        with open(os.path.join(wd, notebook, notebook) + '.py', 'w+') as f:
+            f.write(source) #lines(source.encode('utf-8'))
+    except:
+        print("Notebook conversion failed")
+        #pass
+        raise
+
+    #Change to working dir for test
+    os.chdir(notebook)
+    #Execute converted script
+    subprocess.check_call(['python', notebook+".py"])
 
     #Use output of the initial run as expected data
     if not dirfound:
-        print "Using files created by initial run as expected output for tests"
+        print("Using files created by initial run as expected output for tests")
         images = glob.glob("*.png")
         for f in images:
             shutil.move(f, os.path.join('expected', f))
@@ -53,22 +59,18 @@ def testNotebook(path):
     os.chdir(wd)
 
 #Process list of notebooks, local and in LavaVu notebooks folder
-
-#Selected notebooks from LavaVu
 nbdir = os.path.join(os.path.dirname(lavavu.__file__), "notebooks")
-print nbdir 
-#files = glob.glob(nbdir  + "/*.ipynb")
+print(nbdir)
 files = [
-    'ColourMaps.ipynb'
+    'ColourMaps.ipynb',
+    'Camera.ipynb'
     ]
 
-print files
+print(files)
 for f in files:
     fname = os.path.join(nbdir, f)
+    if not os.path.isfile(fname):
+        fname = f
+    print(fname)
     testNotebook(fname)
 
-#Local notebooks in the test repo
-files = glob.glob("*.ipynb")
-print files
-for f in files:
-    testNotebook(f)

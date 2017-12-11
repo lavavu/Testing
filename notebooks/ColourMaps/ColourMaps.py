@@ -13,6 +13,7 @@
 
 # In[1]:
 
+
 #First set up a basic vis so we can display the colourmaps
 import lavavu
 lv = lavavu.Viewer(border=False, axis=False, background="gray90", quality=1)
@@ -50,15 +51,30 @@ lv = lavavu.Viewer(border=False, axis=False, background="gray90", quality=1)
 
 # In[2]:
 
+
 #Create colour bar then load a colourmap into it
 cbar1 = lv.colourbar(size=[0.95,15], align="top")
 cbar1.colourmap([(0, 'green'), (0.75, 'yellow'), (1, 'red')], reverse=True)
+
+
+# In[4]:
+
 
 #Create another colour bar and load a map, this time with a log scale
 cbar2 = lv.colourbar(size=[0.95,15], align="top", tickvalues=[20,50,100,200,500])
 cbar2.colourmap('black (100)goldenrod (101)khaki white', range=[10,1000], logscale=True)
 
+
+# In[5]:
+
+
 lv.display(resolution=[640,80], transparent=True)
+
+
+# In[6]:
+
+
+print(cbar1)
 
 
 # **CubeHelix**
@@ -66,7 +82,8 @@ lv.display(resolution=[640,80], transparent=True)
 # Custom [cube helix](https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/) maps can be generated with cubeHelix(), these will always have monotonically varying intensity values to be when printed in greyscale
 # 
 
-# In[3]:
+# In[7]:
+
 
 cbar1.colourmap(lavavu.cubeHelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma=1.0, alpha=False))
 cbar2.colourmap(lavavu.cubeHelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), logscale=False)
@@ -84,9 +101,10 @@ lv.display(resolution=[640,80], transparent=True)
 # 
 # Colourmap data can be retreived with .getcolourmap() on an object, which returns the map formatted as a string, .getcolourmap(string=False) returns a python list of (position, colour) tuples instead. Either of these formats are supported when creating a colourmap so the data can be modified and passed to a new colour map.
 
-# In[4]:
+# In[8]:
 
-print cbar1.getcolourmap()
+
+print(cbar1.getcolourmap())
 
 
 # **CPT colour tables**
@@ -96,7 +114,8 @@ print cbar1.getcolourmap()
 # 
 # The *positions=False* argument can be passed to ignore the position data and load only the colours.
 
-# In[5]:
+# In[9]:
+
 
 try:
     #Check if file exists, if not download it from cpt-city
@@ -121,11 +140,13 @@ except:
 # 
 # There are a number of colour maps available for convenience which can be accessed by passing their name instead of a list of colours when creating a colour map.
 
-# In[6]:
+# In[10]:
+
 
 #Get the list of colormap names
+#suggest: lv.colourmaps.(names)
 maps = lv.defaultcolourmaps()
-print maps
+print(maps)
 
 
 # The first eight maps are selected to vary evenly in luminance to reduce banding artifacts  
@@ -134,15 +155,17 @@ print maps
 # 
 # The colourmap data can be retrieved for modification as follows:
 
-# In[7]:
+# In[11]:
 
-print lv.defaultcolourmap('cubelaw')
+
+print(lv.defaultcolourmap('cubelaw'))
 
 
 # **Plot of all built in maps**  
 # Finally we will plot all the available built in colourmaps in continuous and discrete modes
 
-# In[8]:
+# In[12]:
+
 
 #Clear the plot and create some new colour bars
 lv.clear()
@@ -152,19 +175,15 @@ cbar1 = lv.colourbar(size=[0.95,15], align="top")
 cbar2 = lv.colourbar(size=[0.95,15], align="top", binlabels=True)
 
 
-# In[9]:
+# In[13]:
+
 
 #Plot each map in the list
 for name in maps:
-    print name
+    print(name)
     #Load as continuous colourmap
     cbar1.colourmap(name)
     #Load as discrete colourmap
     cbar2.colourmap(name, discrete=True, range=[-6,6])
     lv.display(resolution=[640,80], transparent=True)
-
-
-# In[ ]:
-
-
 

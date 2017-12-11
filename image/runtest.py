@@ -10,7 +10,7 @@ lv.image('small.png', resolution=(250,150), transparent=False)
 with open('small.png', mode='rb') as file: # b is important -> binary
     fileContent = file.read()
     import base64
-    pyencoded = 'data:image/png;base64,' + base64.b64encode(fileContent)
+    pyencoded = 'data:image/png;base64,' + str(base64.b64encode(fileContent),'utf-8')
     if pyencoded != lvencoded:
         raise ValueError('Base64 encoded images do not match')
 
