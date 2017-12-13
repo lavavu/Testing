@@ -52,5 +52,19 @@ lv.image("LavaVu.png")
 lv["background"] = "white"
 lv.image("LavaVu-1.png")
 
+#Test modifying colourmaps
+cmap = particles.colourmap('jet')
+#cmap = particles.colourmap()
+
+#Modify colours by list
+cmap.colours[0] = 'magenta'
+#Modify colour list by component, set last colour to transparent
+cmap.colours[-1][3] = 0
+
+#Modify position list, move first colour to middle
+cmap.positions[0] = 0.5
+
+lv.image("LavaVu-2.png")
+
 lv.testimages()
 
