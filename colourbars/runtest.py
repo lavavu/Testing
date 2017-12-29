@@ -58,11 +58,12 @@ cmap = particles.colourmap('jet')
 
 #Modify colours by list
 cmap.colours[0] = 'magenta'
+#Append a colour
+cmap.colours += "#ffffcc"
+#Modify position list, move last (appended) colour to middle
+cmap.positions[-1] = 0.5
 #Modify colour list by component, set last colour to transparent
 cmap.colours[-1][3] = 0
-
-#Modify position list, move first colour to middle
-cmap.positions[0] = 0.5
 
 lv.image("LavaVu-2.png")
 
