@@ -41,6 +41,11 @@ def testNotebook(path):
 
     #Change to working dir for test
     os.chdir(notebook)
+
+    #Remove any images from partial test run
+    for im in glob.glob("*.png"):
+        os.remove(im)
+
     #Execute converted script
     subprocess.check_call(['python', notebook+".py"])
 
