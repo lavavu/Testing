@@ -1,17 +1,15 @@
 #!/usr/bin/env python
 import lavavu
 import os
-import importlib
 import imp
 import sys
 path = os.getcwd()
 
-#Pass "xvfb" to open a virtual display for testing
 if "echo" in sys.argv:
-    lavavu.echo_fails = 1
+    lavavu.settings["echo_fails"] = True
 
 if "verbose" in sys.argv:
-    lavavu.default_args += ['-v']
+    lavavu.settings["default_args"] += ['-v']
 
 for d in os.listdir(path):
     if not os.path.isdir(os.path.join(path,d)): continue
