@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import lavavu
 
 lv = lavavu.Viewer(quality=2)
@@ -22,3 +23,4 @@ lv.image('test1.jpg', resolution=(350,300))
 lv.image('test1.png', resolution=(451,199), transparent=True)
 
 lv.testimages()
+

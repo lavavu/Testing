@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #This test runs notebooks that produce image output and checks the images against expected output
 # coding: utf-8
 import lavavu

@@ -3,17 +3,12 @@ import lavavu
 
 #Test caching with multiple models with differing timesteps
 dbfiles = ["PolymerA.gldb", "PolymerB.gldb"]
-#dbfiles = "Polymer*.gldb"
+#dbfiles = "Polymer*.gldb" #TODO: fix
 
 #lv = lavavu.Viewer(cache=True)
 lv = lavavu.Viewer(arglist=dbfiles, resolution=[400,300], cache=True)
 
-#lv.files(dbfiles) #TODO: Fix!
-#lv.file(dbfiles[0])
-
-#lv.model('add')
-
-#lv.file(dbfiles[1])
+lv.files(dbfiles)
 
 lv.open()
 
