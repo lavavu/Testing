@@ -54,5 +54,9 @@ myfilter = points.excludemap('default', (0.4, 0.6))
 
 lv.images()
 
+#Disable full timestep range
+lv["steprange"] = True
+lv.image("steprange")
+
 #Compare the output to expected results
 lv.testimages()
