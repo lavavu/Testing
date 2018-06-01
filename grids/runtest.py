@@ -13,7 +13,7 @@ import lavavu
 import random
 random.seed(0) # Set the random number generator to a fixed sequence.
 
-def createGrid(verts, indices=None, **kwargs):
+def createGrid(verts, indices=None, colours=None, **kwargs):
     global lv, quads
     #TODO: fix these, both seem to have bugs
     #lv.clear(True)
@@ -25,14 +25,15 @@ def createGrid(verts, indices=None, **kwargs):
     lv = lavavu.Viewer(background="white", border=0, axis=False, resolution=(300,300))
     quads = lv.quads("mesh", cullface=True, **kwargs)
 
-    print(lv.objects)
     quads.colourmap("diverge");
     quads["colourby"] = "field"
     quads.vertices(verts)
     #Test colour vals
     vals = [random.uniform(-0.5,0.5), random.uniform(-0.5,0.5), random.uniform(-0.5,0.5), random.uniform(-0.5,0.5)]
-    print(vals)
-    quads.values(vals, "field")
+    if colours is None:
+        quads.values(vals, "field")
+    else:
+        quads.colours(colours)
     if indices is not None:
         quads.indices(indices)
     lv.display()
@@ -69,7 +70,7 @@ V = [[0,2], [1,2], [2,2], [0,1], [1,1], [2,1], [0,0], [1,0], [2,0]]
 I = [[3, 4, 1, 0], [4, 5, 2, 1], [6, 7, 4, 3], [7, 8, 5, 4]]
 
 #Use our own indices - colours will be interpolated
-createGrid(V, I)
+createGrid(V, I, colours=["#ff0000", "#880000", "#000000", "#ff8800", "#888800", "#008800", "#ffff00", "#88ff00", "#00ff00"])
 
 #5) With passed dims, auto index, grid layout expected:
 createGrid(V, None, dims=[3,3])
