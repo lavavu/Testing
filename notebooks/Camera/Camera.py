@@ -66,8 +66,8 @@ def camset(axis, angle):
 def camcheck():
     cam = lv.camera()
     lv.reset()
-    lv.rotation(*cam['xyzrotation'])
-    lv.translation(*cam['translation'])
+    lv.rotation(*cam['xyzrotate'])
+    lv.translation(*cam['translate'])
     lv.display(resolution=[300,200])
 
 camset('x', 90)
