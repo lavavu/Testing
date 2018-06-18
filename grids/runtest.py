@@ -13,16 +13,17 @@ import lavavu
 import random
 random.seed(0) # Set the random number generator to a fixed sequence.
 
+#Create viewer
+lv = lavavu.Viewer(background="white", border=0, axis=False, resolution=(300,300))
+
 def createGrid(verts, indices=None, colours=None, **kwargs):
     global lv, quads
-    #TODO: fix these, both seem to have bugs
-    #lv.clear(True)
-    #quads.clear()
-    #for key in kwargs:
-    #    quads[key] = kwargs[key]
 
-    #Re-create, works around issues with clear() for now
-    lv = lavavu.Viewer(background="white", border=0, axis=False, resolution=(300,300))
+    #Clear all data
+    lv.clear(True)
+    for key in kwargs:
+        quads[key] = kwargs[key]
+
     quads = lv.quads("mesh", cullface=True, **kwargs)
 
     quads.colourmap("diverge");
