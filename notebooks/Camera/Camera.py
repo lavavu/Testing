@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[ ]:
@@ -94,4 +94,10 @@ for c in range(10):
     lv.rotation(random.random()*360, random.random()*360, random.random()*360)
     lv.display(resolution=[300,200])
     camcheck()
+
+
+# In[ ]:
+
+
+
 
