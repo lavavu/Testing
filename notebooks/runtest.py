@@ -68,7 +68,8 @@ nbdir = os.path.join(os.path.dirname(lavavu.__file__), "notebooks")
 print(nbdir)
 files = [
     'ColourMaps.ipynb',
-    'Camera.ipynb'
+    'Camera.ipynb',
+    'DataTests.ipynb'
     ]
 
 print(files)
