@@ -19,7 +19,7 @@ for d in os.listdir(path):
     os.chdir(d)
     print("Running tests in " + os.getcwd())
     print("===================================================")
-    subprocess.call(["python", fn])
+    subprocess.check_call(["python", fn])
     os.chdir(path)
     print("===================================================")
 
