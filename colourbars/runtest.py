@@ -34,7 +34,7 @@ obj["outline"] = 2
 obj["fontcolour"] = "#888888"
 
 lines = lv.objects["line-segments"]
-cmap = lv.colourmap("line-segments", "red green blue")
+cmap = lv.colourmap("red green blue", name="line-segments")
 lines["colourmap"] = cmap
 lines.colourbar(align="right") #Another on right
 
