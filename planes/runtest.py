@@ -23,7 +23,7 @@ right_face = [[[x1, y1, z1], [x1, y1, z0]], [[x1, y0, z1], [x1, y0, z0]]] #Start
 
 def box(g, **kwargs):
     global lv
-    #lv.clear() #TODO: fix
+    lv.clear()
     lv = lavavu.Viewer(border=0, verbose=0, axis=True)
 
     #Correct box
@@ -43,7 +43,7 @@ def test(out, exp):
     lv.rotate('y', 45)
     lv.rotate('x', 25)
     lv.translation(0, 0.0, -2.25)
-    #lv.interactive()
+    lv.render()
     lv.image(out, resolution=[300, 300])
 
     if not lv.testimage("expected/" + exp, out):
@@ -60,6 +60,7 @@ test("quads_r.png", "reverse.png")
 #Correct
 box("triangles", dims=[2,2])
 test("tris.png", "box.png")
+
 #Inverse
 box("triangles", flip=True, dims=[2,2])
 test("tris_r.png", "reverse.png")
