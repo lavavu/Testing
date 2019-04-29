@@ -3,7 +3,11 @@ import lavavu
 import os
 import sys
 import subprocess
+import imp
 path = os.getcwd()
+
+#Below settings don't work unless tests run as modules
+module = True
 
 if "echo" in sys.argv:
     lavavu.settings["echo_fails"] = True
@@ -19,7 +23,10 @@ for d in os.listdir(path):
     os.chdir(d)
     print("Running tests in " + os.getcwd())
     print("===================================================")
-    subprocess.check_call(["python", fn])
+    if module:
+        testmod = imp.load_source('runtest', fn)
+    else:
+        subprocess.check_call(["python", fn])
     os.chdir(path)
     print("===================================================")
 
