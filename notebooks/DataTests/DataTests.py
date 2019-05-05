@@ -30,9 +30,9 @@ print(verts.shape)
 #Create a simple test plot with colour bar
 lv = None
 surf = None
-def plot(verts, values):
+def plot(verts, values, *args, **kwargs):
     global lv, surf
-    lv = lavavu.Viewer(background="lightgrey", resolution=(100,100))
+    lv = lavavu.Viewer(background="lightgrey", resolution=(100,100), *args, **kwargs)
     surf = lv.quads("surface", colourmap="diverge")
     surf.colourbar(align="left", font="vector", size=(0.8,0.1), offset=10, position=0, fontscale=0.6)
     surf.vertices(verts)
@@ -140,7 +140,7 @@ lv = lavavu.Viewer(resolution=(100,100))
 
 
 #Plot some static geometry first
-my_lines = lv.lines("ref_line", colour="green", linewidth=1.0)
+my_lines = lv.lines("ref_line", colour="green", linewidth=6.0)
 for y in numpy.linspace(0,1,16):
     my_lines.vertices([(0.0, y, 0.0), (1.0, y, 0.0)])
 

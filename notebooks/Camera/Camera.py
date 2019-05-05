@@ -61,7 +61,6 @@ lv["axislength"] = 0.35
 def camset(axis, angle):
     lv.reset()
     lv.rotate(axis, angle)
-    lv.display(resolution=[300,200])
 
 def camcheck():
     cam = lv.camera()
