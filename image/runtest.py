@@ -22,5 +22,11 @@ lv.test()
 lv.image('test1.jpg', resolution=(350,300))
 lv.image('test1.png', resolution=(451,199), transparent=True)
 
+#Thick lines rendering test
+lv.hide(1, 2, 4, 5, 6)
+lv.border(0)
+lv["linewidth"] = 15
+lv.image('lines.jpg', resolution=(350,300))
+
 lv.testimages()
 
