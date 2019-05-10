@@ -60,8 +60,6 @@ lv.clear()
 
 #Load a procedurally generated texture
 import numpy as np
-from matplotlib import pyplot as plt
-
 np.random.seed(0)
 img = np.random.random([500, 500])
 
