@@ -63,11 +63,6 @@ import numpy as np
 np.random.seed(0)
 img = np.random.random([500, 500])
 
-#Convert to uint8 rgb
-img = 255 * img
-img = img.astype(np.uint8)
-img = np.stack([img, img, img], axis=-1)
-
 #Use triangles with auto-texcoords
 V = [[-1.,0.,0.], [1., 0., 0.], [1., 1., 0.1], [-1.,0.,0.], [1., 1., 0.1], [-1.,1.,0.]]
 tris = lv.triangles(vertices=V, colour="grey")
@@ -75,6 +70,19 @@ tris.texture(img)
 img = None
 
 lv.image("test5.jpg", resolution=(200,150))
+
+lv.clear()
+
+#Colour
+img = np.random.random([500, 500, 3])
+
+#Use triangles with auto-texcoords
+V = [[-1.,0.,0.], [1., 0., 0.], [1., 1., 0.1], [-1.,0.,0.], [1., 1., 0.1], [-1.,1.,0.]]
+tris = lv.triangles(vertices=V, colour="grey")
+tris.texture(img)
+img = None
+
+lv.image("test6.jpg", resolution=(200,150))
 
 #Remove the test texture, so will not be copied to expected
 import os
