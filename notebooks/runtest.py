@@ -32,12 +32,12 @@ def testNotebook(path):
         from nbconvert import PythonExporter
         with open(path) as fh:
             nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
-        exporter = PythonExporter()
-        source, meta = exporter.from_notebook_node(nb)
-        with open(os.path.join(wd, notebook, notebook) + '.py', 'w+') as f:
-            f.write(source) #lines(source.encode('utf-8'))
-    except:
-        print("Notebook conversion failed")
+            exporter = PythonExporter()
+            source, meta = exporter.from_notebook_node(nb)
+            with open(os.path.join(wd, notebook, notebook) + '.py', 'w+') as f:
+                f.write(source) #lines(source.encode('utf-8'))
+    except (Exception) as e:
+        print("Notebook conversion failed: ", e)
         pass
 
     #Change to working dir for test
@@ -64,7 +64,7 @@ def testNotebook(path):
     os.chdir(wd)
 
 #Process list of notebooks, local and in LavaVu notebooks folder
-nbdir = os.path.join(os.path.dirname(lavavu.__file__), "notebooks")
+nbdir = os.path.join(os.path.dirname(lavavu.__file__), "../notebooks")
 print(nbdir)
 files = [
     'ColourMaps.ipynb',
@@ -74,8 +74,10 @@ files = [
 
 print(files)
 for f in files:
+    #Find in package notebooks path if available
     fname = os.path.join(nbdir, f)
     if not os.path.isfile(fname):
+        #Not found, use current working directory
         fname = f
     print(fname)
     testNotebook(fname)
