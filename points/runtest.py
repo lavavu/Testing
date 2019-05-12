@@ -26,7 +26,7 @@ lines = lv.lines("axes", link=False, vertices=[[-1.5, 0, 0], [1.5, 0, 0], [0, -1
 
 #Time varying data: points
 points = lv.points(pointsize=16, opacity=0.75, pointtype="shiny")
-points.colourmap(lavavu.cubeHelix())
+points.colourmap(lavavu.cubehelix())
 points.colourbar()
 
 for step in range(3):
