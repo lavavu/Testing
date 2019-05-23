@@ -61,7 +61,7 @@ lv.clear()
 #Load a procedurally generated texture
 import numpy as np
 np.random.seed(0)
-img = np.random.random([500, 500])
+img = np.random.random([20, 20])
 
 #Use triangles with auto-texcoords
 V = [[-1.,0.,0.], [1., 0., 0.], [1., 1., 0.1], [-1.,0.,0.], [1., 1., 0.1], [-1.,1.,0.]]
@@ -74,7 +74,7 @@ lv.image("test5.jpg", resolution=(200,150))
 lv.clear()
 
 #Colour
-img = np.random.random([500, 500, 3])
+img = np.random.random([20, 20, 3])
 
 #Use triangles with auto-texcoords
 V = [[-1.,0.,0.], [1., 0., 0.], [1., 1., 0.1], [-1.,0.,0.], [1., 1., 0.1], [-1.,1.,0.]]
