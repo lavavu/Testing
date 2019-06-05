@@ -75,8 +75,11 @@ print(d)
 #Get a copy of original values
 vals_copy = d.values_copy
 #Modify original values
-for v in range(vals_copy[0].shape[0]):
-    vals_copy[0][v] += (0.01*v)
+v = 0
+for i in range(vals_copy[0].shape[0]):
+    for j in range(vals_copy[0].shape[1]):
+        vals_copy[0][i][j] += (0.01*v)
+        v+= 1
 #Show that originals are un-modified
 lv.display()
 
@@ -86,8 +89,11 @@ lv.display()
 
 #Modify values in place
 vals = d.values
-for v in range(vals[0].shape[0]):
-    vals[0][v] -= (0.01*v)
+v = 0
+for i in range(vals[0].shape[0]):
+    for j in range(vals[0].shape[1]):
+        vals[0][i][j] -= (0.01*v)
+        v += 1
 
 #Have to set the range here or change will be undetected
 #This is due to caching of ranges to avoid expensive re-calculation
@@ -155,4 +161,10 @@ lv.display()
 lv.file("exported.gldb")
 print(lv.objects)
 lv.display()
+
+
+# In[ ]:
+
+
+
 
