@@ -10,13 +10,13 @@ import lavavu
 lv = lavavu.Viewer(axis=False, border=1, rulers=True, resolution=[300,200], fontscale=2, background="white")
 
 #object with fixed vertices and time varying values
-s0 = lv.shapes(shape=1, scaling=0.2, vertices=[0.5,0.0,1.0], colourmap="cubelaw")
+s0 = lv.cuboids(scaling=0.2, vertices=[0.5,0.0,1.0], colourmap="cubelaw")
 
 lv.addstep(title="STEP 0")
 s0.values(0)
 
 #Object with all time varying data
-s1 = lv.shapes(shape=0, scaling=0.2, vertices=[0,0,0], colour="red")
+s1 = lv.spheres(scaling=0.2, vertices=[0,0,0], colour="red")
 
 lv.addstep(title="STEP 1")
 
@@ -24,7 +24,7 @@ s0.values(1)
 s1.vertices([0.1, 0., 0.])
 
 #Fixed objects
-s2 = lv.shapes(shape=1, scaling=0.4, vertices=[0,0.5,0], colour="green", fixed=True)
+s2 = lv.cuboids(scaling=0.4, vertices=[0,0.5,0], colour="green", fixed=True)
 s3 = lv.shapes(shape=1, scaling=0.3, vertices=[0.5,0.5,0], colour="blue", fixed=True)
 s4 = lv.shapes(shape=1, scaling=0.2, vertices=[0.5,0.5,0.5], colour="yellow", fixed=True)
 
@@ -59,3 +59,4 @@ lv.image("autofit")
 
 #Compare the output to expected results
 lv.testimages()
+

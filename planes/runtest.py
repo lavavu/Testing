@@ -29,12 +29,12 @@ def box(g, **kwargs):
     #Correct box
     #Vertices interpreted as grid if dimensions provide (row by row), otherwise quads (counter clockwise travel per quad)
     # dimensions can be provided with dims=[w,h] or by array shape
-    front   = lv.add("front", geometry=g, vertices=front_face, colour="blue", cullface=True, **kwargs)
-    back    = lv.add("back", geometry=g, vertices=back_face, colour="blue", cullface=True, **kwargs)
-    bottom  = lv.add("bottom", geometry=g, vertices=bot_face, colour="green", cullface=True, **kwargs)
-    top     = lv.add("top", geometry=g, vertices=top_face, colour="green", cullface=True, **kwargs)
-    left    = lv.add("left", geometry=g, vertices=left_face, colour="red", cullface=True, **kwargs)
-    right   = lv.add("right", geometry=g, vertices=right_face, colour="red", cullface=True, **kwargs)
+    front   = lv.add("front", renderer=g, vertices=front_face, colour="blue", cullface=True, **kwargs)
+    back    = lv.add("back", renderer=g, vertices=back_face, colour="blue", cullface=True, **kwargs)
+    bottom  = lv.add("bottom", renderer=g, vertices=bot_face, colour="green", cullface=True, **kwargs)
+    top     = lv.add("top", renderer=g, vertices=top_face, colour="green", cullface=True, **kwargs)
+    left    = lv.add("left", renderer=g, vertices=left_face, colour="red", cullface=True, **kwargs)
+    right   = lv.add("right", renderer=g, vertices=right_face, colour="red", cullface=True, **kwargs)
 
 def test(out, exp):
     global lv
