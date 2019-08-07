@@ -6,7 +6,10 @@ import os
 # along with transparent surface rendering
 
 #Organise the data by muscle group and provide group names and colours for elements
-dataset = {}
+#dataset = {}
+#Required for python 2.7
+from collections import OrderedDict
+dataset = OrderedDict()
 dataset[""] = [("Mandible.obj", [170,151,114]),
                ("Cranium-reduced-100k.obj", [170,151,114])]
 
