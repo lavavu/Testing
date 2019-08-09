@@ -7,7 +7,7 @@ import lavavu
 #auto bounds calc
 #auto zoom
 
-lv = lavavu.Viewer(axis=False, border=1, rulers=True, resolution=[300,200], fontscale=2, background="white")
+lv = lavavu.Viewer(axis=False, border=1, rulers=True, resolution=[300,200], fontscale=0.71, rulerscale=2, background="white")
 
 #object with fixed vertices and time varying values
 s0 = lv.cuboids(scaling=0.2, vertices=[0.5,0.0,1.0], colourmap="cubelaw")

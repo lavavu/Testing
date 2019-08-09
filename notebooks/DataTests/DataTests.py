@@ -34,7 +34,7 @@ def plot(verts, values, *args, **kwargs):
     global lv, surf
     lv = lavavu.Viewer(background="lightgrey", resolution=(100,100), *args, **kwargs)
     surf = lv.quads("surface", colourmap="diverge")
-    surf.colourbar(align="left", font="vector", size=(0.8,0.1), offset=10, position=0, fontscale=0.6)
+    surf.colourbar(align="left", font="vector", size=(0.8,0.1), offset=10, position=0, fontscale=1.5)
     surf.vertices(verts)
     surf.values(values) 
     lv.display()

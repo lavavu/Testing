@@ -16,7 +16,7 @@ left = particles.colourbar(align="left")
 
 obj = right
 obj["font"] = "vector"
-obj["fontscale"] = 0.5
+obj["fontscale"] = 1.26
 obj["ticks"] = 4
 obj["outline"] = 0
 
@@ -29,6 +29,7 @@ obj["size"] = [0.5,0.1]
 obj["position"] = -60
 obj["offset"] = 30
 obj["font"] = "vector"
+obj["fontscale"] = 2.5
 obj["tickvalues"] = [2,4,5]
 obj["outline"] = 2
 obj["fontcolour"] = "#888888"

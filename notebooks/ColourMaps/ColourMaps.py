@@ -41,13 +41,13 @@ lv = lavavu.Viewer(border=False, axis=False, background="gray90", quality=1)
 # Colour order and positions can be reversed by passing *reverse=True*.  
 # Pass *discrete=True* to produce a discrete colour map instead of a continuously varying one.  
 # *log=True* will apply a logarithmic scale.  
-# Addional properties to the colour map can be passed, for details see: https://mivp.github.com/LavaVu-Documentation/Property-Reference#colourmap
+# Addional properties to the colour map can be passed, for details see: https://lavavu.github.com/Documentation/Property-Reference#colourmap
 # 
 # **Colour bars**  
 # 
 # The colourbar() function creates a colour bar plot, it can be called from an object and uses that objects colour map, if called on the viewer it must have its map specified at some point with colourmap(data).
 # 
-# There are several properties that specify how the colour bar is displayed, see: https://mivp.github.com/LavaVu-Documentation/Property-Reference#colourbar
+# There are several properties that specify how the colour bar is displayed, see: https://lavavu.github.com/Documentation/Property-Reference#colourbar
 
 # In[2]:
 
