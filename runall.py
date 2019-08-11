@@ -11,8 +11,7 @@ if sys.version_info[0] < 3:
 else:
     print("Running doctests...")
     os.chdir(os.path.dirname(lavavu.__file__))
-    #subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
-    #subprocess.check_call(["python", "lavavu.py"])
+    subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
     os.chdir(path)
 
 for d in os.listdir(path):
