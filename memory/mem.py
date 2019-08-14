@@ -21,10 +21,13 @@ def usage():
 class Log(object):
     def __init__(self, name="MemLog"):
         self.fn = name+".txt"
+        self.name = name
+        self.clear()
+
+    def clear(self):
         self.logfile = open(self.fn, "w")
         self.count = 0
         self.last = 0
-        self.name = name
 
     def log(self):
         musage = usage()
@@ -47,4 +50,32 @@ class Log(object):
         pl.savefig(imgfile)
         pl.show()
 
+    def leaktest(self, threshold=0.1, window=5):
+        """
+        An attempt to check for memory leaks
+        Measures the gradient of the usage over a short window
+        If the median is above the threshold, the test fails
+        """
+        self.logfile.flush() #Ensure entries all written
+        with open(self.fn, 'r') as f:
+            grads = []
+            percent = None
+            lines = f.readlines()
+            #Calculate gradients over a window of steps (default 5)
+            if len(lines) < window:
+                print("Require at least %d log entries", window)
+                return
+            for l in range(window, len(lines)):
+                diff = float(lines[l]) - float(lines[l-window])
+                grad = diff / float(window)
+                #print(l, l-window, diff, grad, float(lines[l]), float(lines[l-window]))
+                grads.append(grad)
+
+        import numpy
+        med = numpy.median(grads)
+        avg = numpy.mean(grads)
+        print("Median gradient ", med)
+        print("Mean gradient ", avg)
+        if med > threshold:
+            raise(Exception("Memory leak detected, median gradient > " + str(threshold)))
 

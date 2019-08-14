@@ -8,7 +8,6 @@
 
 
 import lavavu
-print(lavavu.version,lavavu.__file__)
 import numpy
 
 
@@ -27,21 +26,34 @@ log = mem.Log('memtest')
 #Get a new viewer instance with required settings
 def newViewer():
     lv = lavavu.Viewer(resolution=(200,200))
-    #lv.test()
-    lv.render()
+    lv.test()
+    return lv
 
 
 # **Iterate**
 # 
-# Just test viewer creation and rendering without any real data
+# Test the image creation and compositing API
 
 # In[ ]:
 
 
-lv = None
-for i in range(20):
-    lv = newViewer()
+lv = newViewer()
+lv.image("default.png", resolution=(500,500))
+for i in range(50):
+    background = lavavu.Image((1200, 900), value=155, channels=4)
     log.log()
+
+    #Paste from buffer
+    background.paste(lv, resolution=(800, 500), position=(1, 1))
+
+    #Paste from image
+    array = lv.loadimage("default.png")
+    
+    background.paste(array, position=(100, 100))
+    
+    background.blend(array, position=(10, 50))
+    
+    #background.display()
 
 
 # In[ ]:
