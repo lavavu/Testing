@@ -9,6 +9,7 @@
 
 import lavavu
 print(lavavu.version,lavavu.__file__)
+lavavu.settings["default_args"] = []
 import numpy
 
 

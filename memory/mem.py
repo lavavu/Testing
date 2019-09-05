@@ -77,5 +77,7 @@ class Log(object):
         print("Median gradient ", med)
         print("Mean gradient ", avg)
         if med > threshold:
+            print(lines[-window:])
+            print(grads)
             raise(Exception("Memory leak detected, median gradient > " + str(threshold)))
 
