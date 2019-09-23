@@ -12,6 +12,6 @@ except (Exception) as e:
     pass
 
 #Disabled due to Mesa GLX memory leak
-#subprocess.check_call(["python", "memory_tests.py"])
+subprocess.check_call(["python", "memory_tests.py"])
 subprocess.check_call(["python", "memory_tests_images.py"])
 
