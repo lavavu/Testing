@@ -40,7 +40,7 @@ def newViewer():
 
 
 lv = None
-for i in range(20):
+for i in range(30):
     lv = newViewer()
     log.log()
 
