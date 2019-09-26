@@ -25,4 +25,4 @@ lv.images()
 #lv.interactive()
 
 #Compare the output to expected results
-lv.testimages()
+lv.testimages(tolerance=0.001)
