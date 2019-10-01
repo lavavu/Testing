@@ -14,6 +14,7 @@ for x in range(-1,2):
     lv.delete(cbar.id)
     vol = lv.Object() #Get last added = volume
     vols.append(vol)
+    vol["bloom"] = 0.4 #Replicate old style blending
     vol["translate"] = [x, 0, 0]
     print(vol["translate"])
 
