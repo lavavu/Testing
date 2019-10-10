@@ -6,13 +6,10 @@ import subprocess
 path = os.getcwd()
 
 #Run the doctests
-if sys.version_info[0] < 3:
-    print("Python 2, Skip doctests")
-else:
-    print("Running doctests...")
-    os.chdir(os.path.dirname(lavavu.__file__))
-    subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
-    os.chdir(path)
+print("Running doctests...")
+os.chdir(os.path.dirname(lavavu.__file__))
+subprocess.check_call(["python", "lavavu.py"])
+os.chdir(path)
 
 for d in os.listdir(path):
     if not os.path.isdir(os.path.join(path,d)): continue

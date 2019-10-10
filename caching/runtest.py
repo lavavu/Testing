@@ -8,8 +8,6 @@ dbfiles = ["PolymerA.gldb", "PolymerB.gldb"]
 #lv = lavavu.Viewer(cache=True)
 lv = lavavu.Viewer(arglist=dbfiles, resolution=[400,300], cache=True)
 
-lv.files(dbfiles)
-
 lv.open()
 
 lv.image("model-1-step-0")
