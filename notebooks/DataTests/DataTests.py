@@ -7,7 +7,7 @@
 # - Database write/read
 # - Static geometry plotting before database load
 
-# In[1]:
+# In[ ]:
 
 
 import lavavu
@@ -15,16 +15,17 @@ import numpy
 print(lavavu.__file__, lavavu.version)
 
 
-# In[2]:
+# In[ ]:
 
 
-DIMS = (20,10)
-zeros = numpy.zeros(shape=DIMS)
-verts = lavavu.grid2d(dims=DIMS)
+width = 20
+height = 10
+zeros = numpy.zeros(shape=(height,width))
+verts = lavavu.grid2d(dims=(width,height))
 print(verts.shape)
 
 
-# In[3]:
+# In[ ]:
 
 
 #Create a simple test plot with colour bar
@@ -34,19 +35,19 @@ def plot(verts, values, *args, **kwargs):
     global lv, surf
     lv = lavavu.Viewer(background="lightgrey", resolution=(100,100), *args, **kwargs)
     surf = lv.quads("surface", colourmap="diverge")
-    surf.colourbar(align="left", font="vector", size=(0.8,0.1), offset=10, position=0, fontscale=1.5)
+    surf.colourbar(align="left", font="vector", size=(0.8,0.1), offset=10, position=0, fontsize=0.6)
     surf.vertices(verts)
     surf.values(values) 
     lv.display()
 
 
-# In[4]:
+# In[ ]:
 
 
 plot(verts, zeros + 1.0)
 
 
-# In[5]:
+# In[ ]:
 
 
 #Test a single value colourmap
@@ -54,14 +55,14 @@ surf.colourmap("blue")
 lv.display()
 
 
-# In[6]:
+# In[ ]:
 
 
 #Restore
 surf.colourmap("diverge")
 
 
-# In[7]:
+# In[ ]:
 
 
 lv.objects
@@ -69,7 +70,7 @@ d = lv.objects["surface"].data
 print(d)
 
 
-# In[8]:
+# In[ ]:
 
 
 #Get a copy of original values
@@ -84,7 +85,7 @@ for i in range(vals_copy[0].shape[0]):
 lv.display()
 
 
-# In[9]:
+# In[ ]:
 
 
 #Modify values in place
@@ -105,44 +106,45 @@ lv.reload()
 lv.display()
 
 
-# In[10]:
+# In[ ]:
 
 
 lv.objects
 d = lv.objects["surface"].data
 
 
-# In[11]:
+# In[ ]:
 
 
 #Get a copy of vertices, reshape to 3D
 vert_copy = d.vertices_copy[0]
-vert_copy = vert_copy.reshape((DIMS[1],DIMS[0],-1))
+print(vert_copy.shape)
+vert_copy = vert_copy.reshape((height,width,-1))
 print(vert_copy.shape)
 
 
-# In[12]:
+# In[ ]:
 
 
 #Plot the modified copies at a new timestep
 plot(vert_copy, vals_copy)
 
 
-# In[13]:
+# In[ ]:
 
 
 #Test export & reload
 lv.export()
 
 
-# In[14]:
+# In[ ]:
 
 
 #Create new viewer
 lv = lavavu.Viewer(resolution=(100,100))
 
 
-# In[15]:
+# In[ ]:
 
 
 #Plot some static geometry first
@@ -154,17 +156,11 @@ print(lv.objects)
 lv.display()
 
 
-# In[16]:
+# In[ ]:
 
 
 #Load the previously exported data
 lv.file("exported.gldb")
 print(lv.objects)
 lv.display()
-
-
-# In[ ]:
-
-
-
 

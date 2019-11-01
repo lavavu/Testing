@@ -68,7 +68,7 @@ cbar2.colourmap('black (100)goldenrod (101)khaki white', range=[10,1000], logsca
 # In[4]:
 
 
-lv.display(resolution=[640,80], transparent=True)
+lv.display(resolution=[640,90], transparent=True)
 
 
 # In[5]:
@@ -89,12 +89,12 @@ cbar1.colourmap(lavavu.cubehelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma
 cbar2.colourmap(lavavu.cubehelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), logscale=False)
 cbar2["tickvalues"] = []
 
-lv.display(resolution=[640,80], transparent=True)
+lv.display(resolution=[640,90], transparent=True)
 
 #Display in greyscale
 cbar1.colourmap(lavavu.cubehelix(samples=16, start=0.5, rot=-0.9, sat=1.0, gamma=1.0, alpha=False), monochrome=True)
 cbar2.colourmap(lavavu.cubehelix(samples=16, start=1.0, rot=0.9, sat=0.75, gamma=1.0, alpha=False), monochrome=True)
-lv.display(resolution=[640,80], transparent=True)
+lv.display(resolution=[640,90], transparent=True)
 
 
 # **Getting data**
@@ -131,7 +131,7 @@ try:
     #Load colour data only
     cbar2.colourmap(lavavu.loadCPT(fn, positions=False))
     
-    lv.display(resolution=[640,80], transparent=True)
+    lv.display(resolution=[640,90], transparent=True)
 except:
     pass
 
@@ -185,7 +185,7 @@ for name in maps:
     cbar1.colourmap(name)
     #Load as discrete colourmap
     cbar2.colourmap(name, discrete=True, range=[-6,6])
-    lv.display(resolution=[640,80], transparent=True)
+    lv.display(resolution=[640,90], transparent=True)
 
 
 # In[ ]:

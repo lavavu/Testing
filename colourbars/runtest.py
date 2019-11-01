@@ -40,10 +40,12 @@ lines["colourmap"] = cmap
 lines.colourbar(align="right") #Another on right
 
 particles.select()
-lv.colourbar()
+cb = lv.colourbar()
 obj = lv.Object() #Gets most recently added
 print(obj)
-obj["font"] = "fixed"
+obj["font"] = "line"
+cb["font"] = "vector"
+cb["fontsize"] = 0.8 #Absolute font size
 
 lv.border(0)
 lv.axis(0)

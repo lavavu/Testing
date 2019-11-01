@@ -8,10 +8,11 @@ path = os.getcwd()
 #Run the doctests
 print("Running doctests...")
 os.chdir(os.path.dirname(lavavu.__file__))
-subprocess.check_call(["python", "lavavu.py"])
+#subprocess.check_call(["python", "lavavu.py"])
+subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
 os.chdir(path)
 
-for d in os.listdir(path):
+for d in sorted(os.listdir(path)):
     if not os.path.isdir(os.path.join(path,d)): continue
     if str(d)[0] == '.': continue
     fn = os.path.join(path, str(d) + '/runtest.py')
