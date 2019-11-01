@@ -21,7 +21,7 @@ python 07_Visualisation.py
 """
 
 import glob
-files = glob.glob('Fig*.gldb', recursive=True)
+files = glob.glob('Fig*.gldb')
 print(files)
 for f in files:
     print(f)
