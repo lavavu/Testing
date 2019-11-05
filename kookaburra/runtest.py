@@ -41,9 +41,6 @@ lv = lavavu.Viewer(quality=2, port=0)
 #We get nicer lighting by getting LavaVu to calculate the correct vertex normals.
 lv["trisplit"] = 1
 
-#Flip the Y and Z axes on surface load
-lv["swapyz"] = True
-
 #Enable transparent output
 lv["pngalpha"] = True
 lv["diffuse"] = 0.8 #Increase lighting level
@@ -65,6 +62,11 @@ for group in dataset:
         obj.file(fn, colours=[colour])
         if len(group): obj["opacity"] = 1.0
 
+for o in lv.objects:
+    #Flip the Y and Z axes
+    obj = lv.objects[o]
+    print("Swap Y/Z", obj["name"])
+    obj.swapyz()
 
 lv.translation(0, 0, -120)
 #lv.rotation(0, 180, 0)
