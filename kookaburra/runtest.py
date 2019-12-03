@@ -68,6 +68,8 @@ for o in lv.objects:
     print("Swap Y/Z", obj["name"])
     obj.swapyz()
 
+lv.reset()
+
 lv.translation(0, 0, -120)
 #lv.rotation(0, 180, 0)
 lv.rotation(0, 1, 0, 0)
