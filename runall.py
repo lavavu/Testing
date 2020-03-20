@@ -19,6 +19,7 @@ for d in sorted(os.listdir(path)):
     if str(d)[0] == '.': continue
     fn = os.path.join(path, str(d) + '/runtest.py')
     if not os.path.isfile(fn): continue;
+    if d == "memory": continue
     os.chdir(d)
     print("Running tests in " + os.getcwd())
     print("===================================================")
