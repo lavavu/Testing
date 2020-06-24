@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import lavavu
 
-lv = lavavu.Viewer(quality=2)
+lv = lavavu.Viewer(quality=2, pointpixelscale=0)
 
 lv.image('test.png')
 

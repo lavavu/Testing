@@ -7,7 +7,7 @@ import lavavu
 # - Tests clearing data before loading new content, entire model and just texcoord data
 # - Test autozoom mode and margin set
 
-lv = lavavu.Viewer(quality=2, axis=False, border=0, margin=0)
+lv = lavavu.Viewer(quality=2, axis=False, border=0, margin=0, pointpixelscale=0)
 
 #Create a texture image for the tests
 lv.test()
