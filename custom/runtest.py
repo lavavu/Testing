@@ -15,9 +15,10 @@ frag = """
 in vec4 vColour;
 in vec3 vVertex;
 in vec2 vTexCoord;
+out vec4 outColour;
 void main(void)
 {
-  gl_FragColor = vColour + vec4(vVertex, 1.0) * 0.5 + 0.5;
+  outColour = vColour + vec4(vVertex, 1.0) * 0.5 + 0.5;
 }
 """
 
