@@ -31,5 +31,5 @@ void main()
       break;
   }
 
-  colour = texture2D(palette, vec2(float(i) / float(iterations), 0.0));
+  colour = texture(palette, vec2(float(i) / float(iterations), 0.0));
 }
