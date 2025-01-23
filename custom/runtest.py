@@ -48,10 +48,12 @@ void main(void) {
 }
 """
 
-obj = lv.screen(shaders=[vert, frag], vertices=[[0,0,0]], depthwrite=False)
+obj = lv.screen(shaders=[vert, frag], vertices=[[0,0,0], [1,1,0]], depthwrite=False)
+lv.image('screen.png')
 
 ###################################################################
 
+lv = lavavu.Viewer(axis=False, border=0, resolution=(400,400))
 shaderfiles = ['mandel.vert', 'mandel.frag']
 
 #Without setting renderer=custom this will work, but only until another object is added to the default triangles renderer (which will reset the shader back to the defaults as sortedtriangles are drawn all with a single shader)
