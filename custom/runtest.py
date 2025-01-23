@@ -14,7 +14,6 @@ lv = lavavu.Viewer(axis=False, border=0, resolution=(400,400))
 frag = """
 in vec4 vColour;
 in vec3 vVertex;
-in vec2 vTexCoord;
 out vec4 outColour;
 void main(void)
 {
