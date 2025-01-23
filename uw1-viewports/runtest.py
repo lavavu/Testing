@@ -33,5 +33,5 @@ lv.testimages(tolerance=0.001)
 lv = lavavu.Viewer(database=dbfile, quality=1, min=B0, max=B1)
 lv.timestep(300)
 lv.images(500)
-lv.testimages()
+lv.testimages(tolerance=0.001)
 
