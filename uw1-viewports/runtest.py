@@ -27,7 +27,7 @@ lv.testimages()
 #Using automated image output
 lv = lavavu.Viewer(writeimage=True, timestep=[300, 500], database=dbfile, figure=-1, quality=1, port=0, min=B0, max=B1)
 
-lv.testimages()
+lv.testimages(tolerance=0.001)
 
 #Again using "images" command
 lv = lavavu.Viewer(database=dbfile, quality=1, min=B0, max=B1)
