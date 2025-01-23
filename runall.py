@@ -13,7 +13,7 @@ subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
 os.chdir(path)
 
 disabled = ["memory"]
-disabled_macos_arm64 = ["custom", "notebooks", "uw1-viewports"]
+disabled_macos = ["custom", "notebooks", "uw1-viewports"]
 
 for d in sorted(os.listdir(path)):
     if not os.path.isdir(os.path.join(path,d)): continue
@@ -25,8 +25,8 @@ for d in sorted(os.listdir(path)):
     if d in disabled:
         continue
 
-    #Disabled on MacOS arm64
-    if platform.system() == 'Darwin' and platform.processor() == 'arm' and d in disabled_macos_arm64:
+    #Disabled on MacOS
+    if platform.system() == 'Darwin' and d in disabled_macos:
         continue
 
     os.chdir(d)
