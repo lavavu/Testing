@@ -15,6 +15,10 @@ os.chdir(path)
 disabled = ["memory"]
 disabled_macos = ["custom", "notebooks", "uw1-viewports"]
 
+if platform.system() == 'Windows' and 'CIBUILDWHEEL' in os.environ:
+    #Skip image tests on windows wheel builds as won't run headless
+    exit()
+
 for d in sorted(os.listdir(path)):
     if not os.path.isdir(os.path.join(path,d)): continue
     if str(d)[0] == '.': continue
