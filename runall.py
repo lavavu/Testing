@@ -18,7 +18,7 @@ subprocess.check_call(["python", "-m", "doctest", "-v", "lavavu.py"])
 os.chdir(path)
 
 disabled = ["memory"]
-disabled_macos = ["custom", "notebooks", "uw1-viewports", "volume"]
+disabled_macos = ["custom", "notebooks", "uw1-viewports"]
 
 for d in sorted(os.listdir(path)):
     if not os.path.isdir(os.path.join(path,d)): continue
